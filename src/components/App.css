@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+.boxes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 1rem;
+  row-gap: 1rem;
+}
+.box-container {
+  position: relative;
+  width: 100%;
+  min-height: 100px;
+}
+.box {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border: 1px black solid;
+  font-size: 2rem;
+  text-align: center;
+}
+.box::after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  inset-inline-start: 0;
+  inset-block-start: 0;
+  background-color: blue;
+}
+.checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.checkbox:checked ~ .box {
+  background-color: red;
+}
+.checkbox:checked ~ .box::after {
+  content: none;
+}
